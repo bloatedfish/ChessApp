@@ -1,5 +1,6 @@
 import sys
 import random
+import webbrowser
 from PySide6 import QtCore, QtWidgets, QtGui
 from PySide6.QtWidgets import QMenuBar, QMenu
 from PySide6.QtGui import QPainter, QBrush, QPen
@@ -20,14 +21,15 @@ class MyWidget(QtWidgets.QWidget):
         exitMenu.triggered.connect(self.close)
         helpMenu = menuBar.addMenu('Help')
         howToPlayMenu = helpMenu.addAction('How to Play')
-        #self.setMenuBar(menuBar)
+        howToPlayMenu.triggered.connect(self.openURL)
 
         # Layout
         self.layout = QtWidgets.QVBoxLayout(self)
-        #self.layout.addStretch()
         self.layout.addWidget(menuBar)
         self.layout.setAlignment(menuBar, Qt.AlignTop)
         
+    def openURL(self):
+        webbrowser.open('https://en.wikipedia.org/wiki/Rules_of_chess')
 
     def paintEvent(self, e):
         # Draw Chess Board
