@@ -24,8 +24,10 @@ class MyWidget(QtWidgets.QWidget):
 
         # Layout
         self.layout = QtWidgets.QVBoxLayout(self)
+        #self.layout.addStretch()
         self.layout.addWidget(menuBar)
-        self.layout.addStretch(1)
+        self.layout.setAlignment(menuBar, Qt.AlignTop)
+        
 
     def paintEvent(self, e):
         # Draw Chess Board
@@ -39,11 +41,11 @@ class MyWidget(QtWidgets.QWidget):
                 if((x+y)%2 == 0):
                     painter.setPen(pen)
                     painter.setBrush(brush)
-                    painter.drawRect(x*80, y*80, 80, 80)
+                    painter.drawRect(x*80, y*80+40, 80, 80)
                 else:
                     painter.setPen(pen2)
                     painter.setBrush(brush2)
-                    painter.drawRect(x*80, y*80, 80, 80)
+                    painter.drawRect(x*80, y*80+40, 80, 80)
         painter.end()
 
 if __name__ == "__main__":
@@ -51,7 +53,9 @@ if __name__ == "__main__":
     app = QtWidgets.QApplication([])
 
     widget = MyWidget()
-    widget.resize(640, 640)
+    widget.resize(640, 680)
+    widget.setMinimumSize(640, 680)
+    widget.setMaximumSize(640, 680)
     widget.show()
 
     sys.exit(app.exec())
