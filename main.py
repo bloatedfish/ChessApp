@@ -15,11 +15,11 @@ class MyWidget(QtWidgets.QWidget):
         # MenuBar
         menuBar = QMenuBar(self)
         fileMenu = menuBar.addMenu('Game')
-        newGameButton = fileMenu.addAction('New Game')
-        exitButton = fileMenu.addAction('Exit')
-        
+        newGameMenu = fileMenu.addAction('New Game')
+        exitMenu = fileMenu.addAction('Exit')
+        exitMenu.triggered.connect(self.close)
         helpMenu = menuBar.addMenu('Help')
-        howToPlayButton = helpMenu.addAction('How to Play')
+        howToPlayMenu = helpMenu.addAction('How to Play')
         #self.setMenuBar(menuBar)
 
         # Layout
